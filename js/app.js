@@ -1,5 +1,44 @@
 // global variables
-var defaultColor, 
+var intervalID = window.setInterval(myCallback, 5000);
+
+var score = 0;
+var defaultHair = "rgb(0,0,0)", defaultSkin = "rgb(0,0,0)", defaultEye = "rgb(0,0,0)";
+function myCallback() {
+// console.log("hair Color " + hairColor);
+// console.log("skin Color " + skinColor);
+// console.log("eye Color" + eyeColor);
+// console.log(distance(0,0,0));
+// console.log(parseRGB("rgb(5,6,12)"));
+    score = 0;
+    //console.log(parseRGB(hairColor)[0]);
+    score +=  3.33 - (3.33 * (distance(defaultHair, hairColor)/442));
+    score +=  3.33 - (3.33 * (distance(defaultSkin, skinColor)/442));
+    score +=  3.33 - (3.33 * (distance(defaultEye, eyeColor)/442));
+    
+    console.log(score);
+    
+}
+
+function distance(color1, color2) {
+    let c1 = parseRGB(color1);
+    let c2 = parseRGB(color2);
+    
+    let distance = 442;
+    if((c1 === 'undefined') || (c2 === 'undefined')) 
+        distance = 442;
+    else distance = Math.sqrt(Math.pow(c1[0] - c2[0], 2) + Math.pow(c1[1] - c2[1], 2) + Math.pow(c1[2] - c2[2], 2));
+    
+    return distance;
+}
+
+function parseRGB(input) {
+    m = input.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i);
+    if(m) {
+        return [m[1],m[2],m[3]];
+    }
+}
+
+var defaultColor, hairColor = "", eyeColor = "", skinColor = "",
     open = false,
     duration  = 0.3,
     timing    = 'cubic-bezier(0.7, 0, 0.3, 1)',
@@ -59,7 +98,7 @@ var defaultColor,
       }
       
       // add color picker to dom
-      $('.cp-holder').empty().append('<input type="text" class="picker" data-opacty="1">');
+      $('.cp-holder').empty().append('<input type="text" id = "colorPicker" class="picker" data-opacty="1">');
       
       // detect if background is active
       if ($(".background").hasClass("active")) {
@@ -91,6 +130,7 @@ var defaultColor,
           }
         });
       } else if ($(".face").hasClass("active")) {
+          skinColor = "";
         $('.picker').val($(".viewer svg #head #face-color path").attr('fill')).minicolors({
           format: 'rgb',
           defaultValue: this.value,
@@ -98,6 +138,7 @@ var defaultColor,
           position: 'top left',
           change: function(value, opacity) {
             if ($("[data-call]").hasClass("active")) {
+              skinColor = this.value;
               $(".viewer svg #head #face-color path").attr('fill', this.value);
               rememberDesign();
             }
@@ -130,6 +171,11 @@ var defaultColor,
           }
         });
       } else if ($(".front-hair").hasClass("active")) {
+          hairColor = "";
+          //console.log(hairColor);
+          //console.log("hot " + JSON.stringify($('.front-hair')));
+          //console.log("hair thing"
+                  //+ JSON.stringify($('.picker').val($(".viewer svg #head #front-hair #hair-color path").attr('fill'))));
         $('.picker').val($(".viewer svg #head #front-hair #hair-color path").attr('fill')).minicolors({
           format: 'rgb',
           defaultValue: this.value,
@@ -137,6 +183,9 @@ var defaultColor,
           position: 'top left',
           change: function(value, opacity) {
             if ($("[data-call]").hasClass("active")) {
+              hairColor = this.value;
+              //console.log(this);
+              //console.log(JSON.stringify(this));
               $(".viewer svg #head #front-hair #hair-color path").attr('fill', this.value);
               rememberDesign();
             }
@@ -169,6 +218,7 @@ var defaultColor,
           }
         });
       } else if ($(".eyes").hasClass("active")) {
+        eyeColor = "";
         if (!$(".viewer svg #head #eyes .eye-color").is(":visible")) {
           // add color picker to dom
           $('.cp-holder').empty();
@@ -180,6 +230,7 @@ var defaultColor,
           opacity: false,
           position: 'top left',
           change: function(value, opacity) {
+            eyeColor = this.value;
             if ($("[data-call]").hasClass("active")) {
               $(".viewer svg #head #eyes .eye-color path").attr('fill', this.value);
               rememberDesign();
