@@ -4,17 +4,26 @@ var intervalID = window.setInterval(myCallback, 5000);
 var score = 0;
 var defaultHair = "rgb(0,0,0)", defaultSkin = "rgb(0,0,0)", defaultEye = "rgb(0,0,0)";
 function myCallback() {
-// console.log("hair Color " + hairColor);
-// console.log("skin Color " + skinColor);
-// console.log("eye Color" + eyeColor);
+     hairColorCopy = hairColor.substring(0, 3) + hairColor.substring(4);
+     hairColorCopy = hairColorCopy.substring(0, hairColorCopy.lastIndexOf(",")) + ")";
+    
+    eyeColorCopy = eyeColor.substring(0, 3) + eyeColor.substring(4);
+    eyeColorCopy = eyeColorCopy.substring(0, eyeColorCopy.lastIndexOf(",")) + ")";
+    
+    skinColorCopy = skinColor.substring(0, 3) + skinColor.substring(4);
+    skinColorCopy = skinColorCopy.substring(0, skinColorCopy.lastIndexOf(",")) + ")";
+    
+    console.log("hair Color " + hairColorCopy);
+    console.log("skin Color " + skinColor);
+    console.log("eye Color" + eyeColor);
 // console.log(distance(0,0,0));
 // console.log(parseRGB("rgb(5,6,12)"));
     score = 0;
     //console.log(parseRGB(hairColor)[0]);
-    score +=  3.33 - (3.33 * (distance(defaultHair, hairColor)/442));
+    score +=  3.33 - (3.33 * (distance(defaultHair, hairColorCopy)/442));
     score +=  3.33 - (3.33 * (distance(defaultSkin, skinColor)/442));
     score +=  3.33 - (3.33 * (distance(defaultEye, eyeColor)/442));
-    
+
     console.log(score);
     
 }
@@ -24,7 +33,7 @@ function distance(color1, color2) {
     let c2 = parseRGB(color2);
     
     let distance = 442;
-    if((c1 === 'undefined') || (c2 === 'undefined')) 
+    if((typeof c1 === 'undefined') || (typeof c2 === 'undefined')) 
         distance = 442;
     else distance = Math.sqrt(Math.pow(c1[0] - c2[0], 2) + Math.pow(c1[1] - c2[1], 2) + Math.pow(c1[2] - c2[2], 2));
     
