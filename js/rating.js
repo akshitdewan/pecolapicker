@@ -1,1 +1,1 @@
-document.getElementById("rating").innerHTML = localStorage["score"] +"";
+document.getElementById("rating").innerHTML = Math.round(localStorage["score"]) +"%";
