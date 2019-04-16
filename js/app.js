@@ -11,7 +11,7 @@ function myCallback() {
     
     skinColorCopy = skinColor;
     
-    console.log("ragz hair Color " + hairColorCopy);
+    console.log("ragz hair Color update " + hairColorCopy);
     console.log("skin Color " + skinColorCopy);
     console.log("eye Color" + eyeColorCopy);
 // console.log(distance(0,0,0));
