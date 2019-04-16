@@ -662,8 +662,16 @@ $("#translateyrange").on("change", function() {
 
     <h1 style="text-align: center">ARE YOU PECOLA PERFECT?</h1>
     <button onclick="myCallback()" style="margin-left:47%"><a href="rating.html">SUBMIT</a></button>
-    <button onclick="myCallback()">CALCULATE</a></button>
+    <button onclick="myCallback()">CALCULATE</button>
+      <audio id = "audio" src="./litproject.mp3" autoplay>
+<p>If you are reading this, it is because your browser does not support the audio element.</p>
+</audio>
 
+    <script>
+
+      document.getElementById("audio").loop = true;
+
+    </script>
     <!-- splitter container -->
     <div id="mainSplitter">
       <!-- displays character result -->
