@@ -666,16 +666,17 @@ $("#translateyrange").on("change", function() {
     <h1 style="text-align: center">ARE YOU PECOLA PERFECT?</h1>
 
     <p style="text-align: center">Original music produced by Ragz. Always choose a color after selecting an option. Don't just choose the default colors. </p>
-    <button onclick="myCallback()" style="margin-left:47%"><a href="rating.html">SUBMIT</a></button>
 
-      <audio id = "audio" src="./litproject.mp3" controls autoplay>
+    <audio id = "audio" src="./litproject.mp3" controls autoplay style = "display: block; width: 200px; height: 20px">
 <p>If you are reading this, it is because your browser does not support the audio element.</p>
 </audio>
 
+    <button onclick="myCallback()" style="margin-left:47%;"><a href="rating.html">SUBMIT</a></button>
 
     <script>
 
       document.getElementById("audio").loop = true;
+      document.getElementById("audio").autoplay = true;
 
     </script>
     <!-- splitter container -->
