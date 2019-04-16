@@ -2,7 +2,7 @@
 var intervalID = window.setInterval(myCallback, 5000);
 
 var score = 0;
-var defaultHair = "rgb(0,0,0)", defaultSkin = "rgb(0,0,0)", defaultEye = "rgb(0,0,0)";
+var defaultHair = "rgb(255,247,20)", defaultSkin = "rgb(245,238,226)", defaultEye = "rgb(0,55,255)";
 function myCallback() {
 
      hairColorCopy = hairColor.substring(0, 3) + hairColor.substring(4);
@@ -21,9 +21,15 @@ function myCallback() {
 // console.log(parseRGB("rgb(5,6,12)"));
     score = 0;
     //console.log(parseRGB(hairColor)[0]);
-    score +=  3.33 - (3.33 * (distance(defaultHair, hairColorCopy)/442));
-    score +=  3.33 - (3.33 * (distance(defaultSkin, skinColor)/442));
-    score +=  3.33 - (3.33 * (distance(defaultEye, eyeColor)/442));
+    score +=  3.33 - (3.33 * (distance(defaultHair, hairColorCopy)/442)) + 0.5;
+    score +=  3.33 - (3.33 * (distance(defaultSkin, skinColor)/442)) + 0.5;
+    score +=  3.33 - (3.33 * (distance(defaultEye, eyeColor)/442)) + 0.5;
+
+    score = (score/10.0) *100;
+
+    if (score > 100){
+      score = 98.6111001923432;
+    }
 
     localStorage["score"] = score;
 
