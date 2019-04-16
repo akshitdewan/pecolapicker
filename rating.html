@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>HTML Table & CSS Table</title>
+  <title>Rating</title>
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -16,13 +16,15 @@
 
 <body>
 
+  
+
   <div class="aa_htmlTable">
   <h2 class="aa_h2">YOUR RESULTS</h2>
   <table>
     <thead>
       <tr>
         <th>Pecola Rating</th>
-        <th>80%</th>
+        <th id="rating">80%</th>
       </tr>
       
     </thead>
@@ -34,6 +36,12 @@
 
 </table>
 </div>
+
+<script>
+    var score = localStorage.getItem("score");
+    console.log("HI"+score);
+    document.getElementById("rating").innerHTML = score+"";
+  </script>
 
 
   

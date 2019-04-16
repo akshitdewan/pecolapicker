@@ -26,6 +26,7 @@ function myCallback() {
 
     console.log(score);
     
+    document.getElementById("rating").text = score+"";
 }
 
 function distance(color1, color2) {
