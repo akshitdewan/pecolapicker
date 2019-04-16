@@ -22,8 +22,8 @@ function myCallback() {
     score = 0;
     //console.log(parseRGB(hairColor)[0]);
     score +=  3.33 - (3.33 * (distance(defaultHair, hairColorCopy)/442)) + 0.5;
-    score +=  3.33 - (3.33 * (distance(defaultSkin, skinColor)/442)) + 0.5;
-    score +=  3.33 - (3.33 * (distance(defaultEye, eyeColor)/442)) + 0.5;
+    score +=  3.33 - (3.33 * (distance(defaultSkin, skinColorCopy)/442)) + 0.5;
+    score +=  3.33 - (3.33 * (distance(defaultEye, eyeColorCopy)/442)) + 0.5;
 
     score = (score/10.0) *100;
 

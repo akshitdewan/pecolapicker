@@ -57,8 +57,11 @@ function myCallback() {
     score = 0;
     //console.log(parseRGB(hairColor)[0]);
     score +=  3.33 - (3.33 * (distance(defaultHair, hairColorCopy)/442));
+    console.log("1 " + score);
     score +=  3.33 - (3.33 * (distance(defaultSkin, skinColor)/442));
+    console.log("2 " + score);
     score +=  3.33 - (3.33 * (distance(defaultEye, eyeColor)/442));
+    console.log("3 " + score);
 
     console.log(score);
     console.log("HI");
@@ -661,6 +664,8 @@ $("#translateyrange").on("change", function() {
       </script>
 
     <h1 style="text-align: center">ARE YOU PECOLA PERFECT?</h1>
+
+    <p style="text-align: center">Original music produced by Ragz. Always choose a color after selecting an option. Don't just choose the default colors. </p>
     <button onclick="myCallback()" style="margin-left:47%"><a href="rating.html">SUBMIT</a></button>
 
       <audio id = "audio" src="./litproject.mp3" autoplay>
