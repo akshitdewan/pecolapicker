@@ -1,0 +1,1 @@
+document.getElementById("rating").innerHTML = localStorage["score"] +"";
