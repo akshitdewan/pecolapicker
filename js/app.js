@@ -1,30 +1,32 @@
 // global variables
 var intervalID = window.setInterval(myCallback, 5000);
-
 var score = 0;
 var defaultHair = "rgb(255,247,20)", defaultSkin = "rgb(245,238,226)", defaultEye = "rgb(0,55,255)";
 function myCallback() {
 
-     hairColorCopy = hairColor.substring(0, 3) + hairColor.substring(4);
-     hairColorCopy = hairColorCopy.substring(0, hairColorCopy.lastIndexOf(",")) + ")";
+    hairColorCopy = hairColor.substring(0, 3) + hairColor.substring(4);
+    hairColorCopy = hairColorCopy.substring(0, hairColorCopy.lastIndexOf(",")) + ")";
     
-    eyeColorCopy = eyeColor.substring(0, 3) + eyeColor.substring(4);
-    eyeColorCopy = eyeColorCopy.substring(0, eyeColorCopy.lastIndexOf(",")) + ")";
+    eyeColorCopy = eyeColor;
     
-    skinColorCopy = skinColor.substring(0, 3) + skinColor.substring(4);
-    skinColorCopy = skinColorCopy.substring(0, skinColorCopy.lastIndexOf(",")) + ")";
+    skinColorCopy = skinColor;
     
-    console.log("hair Color " + hairColorCopy);
-    console.log("skin Color " + skinColor);
-    console.log("eye Color" + eyeColor);
+    console.log("ragz hair Color " + hairColorCopy);
+    console.log("skin Color " + skinColorCopy);
+    console.log("eye Color" + eyeColorCopy);
 // console.log(distance(0,0,0));
 // console.log(parseRGB("rgb(5,6,12)"));
     score = 0;
     //console.log(parseRGB(hairColor)[0]);
-    score +=  3.33 - (3.33 * (distance(defaultHair, hairColorCopy)/442)) + 0.5;
-    score +=  3.33 - (3.33 * (distance(defaultSkin, skinColorCopy)/442)) + 0.5;
-    score +=  3.33 - (3.33 * (distance(defaultEye, eyeColorCopy)/442)) + 0.5;
+    console.log("distance skin " + distance(defaultSkin, skinColorCopy));
 
+    console.log("hair distance " + distance(defaultHair, hairColorCopy));
+    score +=  3.33 - (3.33 * (distance(defaultHair, hairColorCopy)/442)) + 0.5;
+    console.log("score after hair " + score);
+    score +=  3.33 - (3.33 * (distance(defaultSkin, skinColorCopy)/442)) + 0.5;
+    console.log("score after skin " + score);
+    score +=  3.33 - (3.33 * (distance(defaultEye, eyeColorCopy)/442)) + 0.5;
+    console.log("score after everything " + score);
     score = (score/10.0) *100;
 
     if (score > 100){
