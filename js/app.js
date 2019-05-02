@@ -1,7 +1,38 @@
+//import * as firebase from "firebase/app";
+
+var config = {
+    apiKey: "AIzaSyDig4BMKwGhJGXUv3eVUjvrgEwO0yFCZRQ",
+    authDomain: "pecola-picker.firebaseapp.com",
+    databaseURL: "https://pecola-picker.firebaseio.com",
+    projectId: "pecola-picker",
+    storageBucket: "pecola-picker.appspot.com",
+    messagingSenderId: "642698639065"
+  };
+  firebase.initializeApp(config);
+        
+    var database = firebase.database();
+
+
 // global variables
-var intervalID = window.setInterval(myCallback, 5000);
+var intervalID = window.setInterval(myCallback, 1000);
 var score = 0;
 var defaultHair = "rgb(255,247,20)", defaultSkin = "rgb(245,238,226)", defaultEye = "rgb(0,55,255)";
+
+function submitClicked() {
+    myCallback();
+    let colors = database.ref().child("colors");
+    colors.push().set({
+        "hair": {
+            hairColor
+        },
+        "eye": {
+        eyeColor
+        },
+        "skin": {
+        skinColor
+        }
+    })
+}
 function myCallback() {
 
     hairColorCopy = hairColor.substring(0, 3) + hairColor.substring(4);
@@ -36,6 +67,7 @@ function myCallback() {
     localStorage["score"] = score;
 
     console.log(score);
+
 }
 
 function distance(color1, color2) {
